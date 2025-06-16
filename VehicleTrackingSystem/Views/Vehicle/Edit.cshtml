@@ -1,0 +1,48 @@
+﻿@model VehicleTrackingSystem.Models.Vehicle
+
+
+@{
+    ViewData["Title"] = "تعديل مركبة";
+}
+
+<h2 class="mb-4">تعديل المركبة</h2>
+
+<form asp-action="Edit">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="Model" class="control-label"></label>
+        <input asp-for="Model" class="form-control" />
+        <span asp-validation-for="Model" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DriverName" class="control-label"></label>
+        <input asp-for="DriverName" class="form-control" />
+        <span asp-validation-for="DriverName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PlateNumber" class="control-label"></label>
+        <input asp-for="PlateNumber" class="form-control" />
+        <span asp-validation-for="PlateNumber" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Location" class="control-label"></label>
+        <input asp-for="Location" class="form-control" />
+        <span asp-validation-for="Location" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="IsActive"></label>
+        <input asp-for="IsActive" type="checkbox" />
+    </div>
+
+    <!-- أضف المزيد من الحقول حسب ما هو موجود في كلاس Vehicle -->
+
+    <button type="submit" class="btn btn-primary mt-3">حفظ التعديلات</button>
+    <a asp-action="Index" class="btn btn-secondary mt-3">رجوع</a>
+</form>

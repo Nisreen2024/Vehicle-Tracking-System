@@ -1,0 +1,46 @@
+﻿
+@model List<VehicleTrackingSystem.Models.Vehicle>
+
+@{
+    ViewData["Title"] = "قائمة المركبات";
+}
+
+<h2>قائمة المركبات</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>رقم اللوحة</th>
+            <th>الموديل</th>
+            <th>اسم السائق</th>
+            <th>الموقع</th>
+            <th>نشطة؟</th>
+            <th>إجراءات</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var vehicle in Model)
+    {
+        <tr>
+            <td>@vehicle.PlateNumber</td>
+            <td>@vehicle.Model</td>
+            <td>@vehicle.DriverName</td>
+            <td>@vehicle.Location</td>
+            <td>@(vehicle.IsActive ? "نعم" : "لا")</td>
+            <td>
+                    <a href="@Url.Action("Edit", "Vehicle", new { id = vehicle.Id })" class="btn btn-warning">تعديل</a>
+
+                
+                @* <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">تعديل</a> *@
+               
+
+                    <a href="@Url.Action("Delete", "Vehicle", new { id = vehicle.Id })" class="btn btn-danger">حذف</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create", "Vehicle")" class="btn btn-success">إضافة مركبة جديدة</a>
+
+<a class="btn btn-success" href="/Vehicle/Create">Add New Vehicle</a>
